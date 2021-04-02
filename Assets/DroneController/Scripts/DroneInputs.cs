@@ -8,11 +8,13 @@ namespace Drone
     [RequireComponent(typeof(PlayerInput))]
     public class DroneInputs : MonoBehaviour
     {
-        private Vector2 cyclic;
-        private float pedals;
-        private float throttle;
+        public float vertical;
+        public float horizontal;
+        public float pedals;
+        public float throttle;
 
-        public Vector2 Cyclic { get => cyclic; }
+        public float Vertical { get => vertical; }
+        public float Horizontal { get => horizontal; }
         public float Pedals { get => pedals; }
         public float Throttle { get => throttle; }
 
@@ -21,9 +23,14 @@ namespace Drone
 
         }
 
-        private void OnCyclic(InputValue value)
+        private void OnVertical(InputValue value)
         {
-            cyclic = value.Get<Vector2>();
+            vertical = value.Get<float>();
+        }
+
+        private void OnHorizontal(InputValue value)
+        {
+            horizontal = value.Get<float>();
         }
 
         private void OnPedals(InputValue value)

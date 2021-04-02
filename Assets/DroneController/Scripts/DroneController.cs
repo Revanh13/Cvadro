@@ -45,8 +45,8 @@ namespace Drone
 
         protected virtual void HandleControls()
         {
-            float pitch = input.Cyclic.y * minMaxPitch;
-            float roll = -input.Cyclic.x * minMaxRoll;
+            float pitch = input.Vertical * minMaxPitch;
+            float roll = input.Horizontal * minMaxRoll;
             yaw += input.Pedals * yawPower;
 
             finalPitch = Mathf.Lerp(finalPitch, pitch, Time.deltaTime * lerpSpeed);
@@ -55,6 +55,7 @@ namespace Drone
 
             Quaternion rot = Quaternion.Euler(finalPitch, finalYaw, finalRoll);
             rb.MoveRotation(rot);
+            
         }
     }
 }
