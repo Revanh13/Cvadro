@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &657668660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657668661}
+  - component: {fileID: 657668662}
+  m_Layer: 8
+  m_Name: DroneCam2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657668661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657668660}
+  m_LocalRotation: {x: 0.70710707, y: -0, z: -0, w: 0.70710653}
+  m_LocalPosition: {x: 0, y: -0.061, z: -0.013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6400994723986607239}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+--- !u!20 &657668662
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657668660}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 54075ad1aae9c324085ee347864f3340, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &1424820847
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424820848}
   - component: {fileID: 1424820850}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DroneCam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +161,7 @@ GameObject:
   - component: {fileID: 6400994723986607257}
   - component: {fileID: 6400994723986607258}
   - component: {fileID: 6400994723986607259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +182,7 @@ Transform:
   - {fileID: 6400994725433323763}
   - {fileID: 6400994724534423329}
   - {fileID: 1424820848}
+  - {fileID: 657668661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -154,6 +229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e7231bc938eb944811d1f870e53a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertical: 0
+  horizontal: 0
+  pedals: 0
+  throttle: 0
 --- !u!54 &6400994723986607258
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,7 +277,7 @@ GameObject:
   - component: {fileID: 6400994724260904172}
   - component: {fileID: 6400994724260904170}
   - component: {fileID: 6400994724260904171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LB_Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6400994724534423329}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Engines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +371,7 @@ GameObject:
   - component: {fileID: 6400994724713591582}
   - component: {fileID: 6400994724713591580}
   - component: {fileID: 6400994724713591581}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RB_Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +431,7 @@ GameObject:
   - component: {fileID: 6400994725082931555}
   - component: {fileID: 6400994725082931554}
   - component: {fileID: 6400994725082931553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LF_Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +491,7 @@ GameObject:
   - component: {fileID: 6400994725165858914}
   - component: {fileID: 6400994725165858912}
   - component: {fileID: 6400994725165858913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RF_Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,6 +658,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae7bd101fff4ff4d8ecdaef191105c6, type: 3}
+--- !u!1 &6400994725433552081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100014, guid: cae7bd101fff4ff4d8ecdaef191105c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6400994725433453183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6400994725433323763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: cae7bd101fff4ff4d8ecdaef191105c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6400994725433453183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6400994725433323753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400022, guid: cae7bd101fff4ff4d8ecdaef191105c6,
@@ -600,18 +691,6 @@ Transform:
 --- !u!4 &6400994725433323759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: cae7bd101fff4ff4d8ecdaef191105c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6400994725433453183}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6400994725433552081 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100014, guid: cae7bd101fff4ff4d8ecdaef191105c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6400994725433453183}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6400994725433323763 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400012, guid: cae7bd101fff4ff4d8ecdaef191105c6,
     type: 3}
   m_PrefabInstance: {fileID: 6400994725433453183}
   m_PrefabAsset: {fileID: 0}
