@@ -41,8 +41,21 @@ namespace Drone
             {
                 isAlive = false;
                 hp = 0;
-                if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
-                    StartCoroutine(DroneCrash());
+                if (CrashText && WinText && timeIsOverText)
+                {
+                    if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
+                        StartCoroutine(DroneCrash());
+                }
+                else if (CrashText && WinText)
+                {
+                    if (!CrashText.activeSelf && !WinText.activeSelf)
+                        StartCoroutine(DroneCrash());
+                }
+                else if (CrashText)
+                {
+                    if (!CrashText.activeSelf)
+                        StartCoroutine(DroneCrash());
+                }
                 am.Play("Destroy");
             }
             else if (collision.relativeVelocity.magnitude > 2.5f)

@@ -32,7 +32,6 @@ namespace Drone
 
         }
 
-
         public void CheckpointAchieved()
         {
             if (currentIndex >= transform.childCount - 1)
@@ -40,8 +39,21 @@ namespace Drone
                 //все точки пройдены
 
                 transform.GetChild(currentIndex).gameObject.SetActive(false);
-                if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
-                    StartCoroutine(Victory());
+                if (CrashText && WinText && timeIsOverText)
+                {
+                    if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
+                        StartCoroutine(Victory());
+                }
+                else if (CrashText && WinText)
+                {
+                    if (!CrashText.activeSelf && !WinText.activeSelf)
+                        StartCoroutine(Victory());
+                }
+                else if (CrashText)
+                {
+                    if (!CrashText.activeSelf)
+                        StartCoroutine(Victory());
+                }
             }
             else
             {
