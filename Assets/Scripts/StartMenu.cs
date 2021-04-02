@@ -55,7 +55,7 @@ namespace Player
         }
 
 
-    private void OnMenu(InputValue value)
+        private void OnMenu(InputValue value)
         {
             menu = value.Get<float>();
             if (menu < 0 && selectedIndex > 0)

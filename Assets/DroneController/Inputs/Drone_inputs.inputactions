@@ -316,14 +316,6 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "AB",
-                    "type": "Button",
-                    "id": "47981d99-5a41-4be2-9255-6c0eadf418d7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -361,26 +353,37 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "ce83f377-22c0-43b0-bcdb-cb03c8882456",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AB",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "889a2572-b65b-40c4-b452-c3547bf640b1",
-                    "path": "<XInputController>/buttonEast",
+                    "name": "WS",
+                    "id": "6126192a-bf32-440c-a487-77faceb85656",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AB",
-                    "isComposite": false,
+                    "action": "Menu",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f955fdf7-260b-488c-b232-b4a504ddc7fe",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e1a17b4d-e362-4925-bb4b-53c6de05605d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

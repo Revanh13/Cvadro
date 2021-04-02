@@ -13,7 +13,12 @@ namespace Drone
         public int maxHP;
 
         public Slider healthbar;
+
+        public GameObject timeIsOverText;
         public GameObject CrashText;
+        public GameObject WinText;
+
+        public AudioManager am;
 
         private bool isAlive;
 
@@ -25,22 +30,26 @@ namespace Drone
 
         void Update()
         {
+
         }
 
         void OnCollisionEnter(Collision collision)
         {
             float power = collision.relativeVelocity.magnitude * 5;
 
-            if (hp - power <= 0 && isAlive)
+            if (collision.relativeVelocity.magnitude > 2.5f && hp - power <= 0 && isAlive)
             {
                 isAlive = false;
                 hp = 0;
-                StartCoroutine(DroneCrash());
+                if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
+                    StartCoroutine(DroneCrash());
+                am.Play("Destroy");
             }
-            else
+            else if (collision.relativeVelocity.magnitude > 2.5f)
             {
                 hp -= (int)power;
                 healthbar.value = hp;
+                am.Play("Crash");
             }
         }
 

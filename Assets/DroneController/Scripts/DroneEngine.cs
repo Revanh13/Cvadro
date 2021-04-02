@@ -43,7 +43,7 @@ namespace Drone
                 return;
             }
 
-            propeller.Rotate(Vector3.up, propRotSpeed);
+            propeller.Rotate(Vector3.forward, propRotSpeed);
         }
     }
 }

@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+
+namespace Drone
 {
-    private CheckpointContainer cc;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Checkpoint : MonoBehaviour
     {
-        cc = transform.parent.gameObject.GetComponent<CheckpointContainer>();
-    }
+        private CheckpointContainer cc;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        // Start is called before the first frame update
+        void Start()
         {
-            cc.CheckpointAchieved();
+            cc = transform.parent.gameObject.GetComponent<CheckpointContainer>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                cc.CheckpointAchieved();
+            }
         }
     }
 }

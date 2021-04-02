@@ -5,47 +5,75 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+
+namespace Drone
 {
-    public float roundTime;
-    public GameObject Player;
-
-    Gamepad gamepad = Gamepad.current;
-
-    // Start is called before the first frame update
-    void Start()
+    public class GameController : MonoBehaviour
     {
-        StartTimer();
-    }
+        public float roundTime;
+        public float stopTime;
+        public GameObject Player;
+        public AudioManager am;
+        public Text timer;
+        public GameObject timeIsOverText;
+        public GameObject CrashText;
+        public GameObject WinText;
+        public DroneController dc;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (gamepad.startButton.wasPressedThisFrame)
+        Gamepad gamepad = Gamepad.current;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(Player);
+            StartTimer();
+            am.Play("Background");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (gamepad.startButton.wasPressedThisFrame)
+            {
+                Destroy(Player);
+                SceneManager.LoadScene(0);
+            }
+        }
+
+        public void StartTimer()
+        {
+            StartCoroutine(TimerTick());
+
+        }
+
+        public void StopTimer()
+        {
+            StopCoroutine(TimerTick());
+        }
+
+        IEnumerator TimerTick()
+        {
+            stopTime = Time.time + roundTime;
+
+            while (Time.time < stopTime)
+            {
+                timer.text = "ТАЙМЕР: " + (int)(stopTime - Time.time);
+
+                yield return new WaitForSeconds(1f);
+            }
+
+            if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
+                StartCoroutine(TimeIsOver());
+        }
+
+        IEnumerator TimeIsOver()
+        {
+            timeIsOverText.SetActive(true);
+            dc.enabled = false;
+
+            yield return new WaitForSeconds(5f);
+
             SceneManager.LoadScene(0);
         }
-    }
-
-    public void StartTimer()
-    {
-        StartCoroutine(TimerTick());
-
-    }
-
-    IEnumerator TimerTick()
-    {
-        float stopTime = Time.time + roundTime;
-
-        while (Time.time < stopTime)
-        {
-            //uiTimer--
-            //print("time left - " + (int)(stopTime - Time.time));
-
-            yield return new WaitForSeconds(1f);
-        }
-
     }
 }
  
