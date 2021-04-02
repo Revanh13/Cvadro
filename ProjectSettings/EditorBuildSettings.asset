@@ -7,8 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
-    guid: 28d8e59772540b84c863d216afebfcb0
+    guid: 40ea3651e4eb03e498c8e44d114458c1
+  - enabled: 1
+    path: Assets/Scenes/MainLevel.unity
+    guid: 2494f14fcf7f44442baaf13deb47425b
   - enabled: 1
     path: Assets/Scenes/TestMap.unity
     guid: c5fb97cf0bab16c48b7fcf736d68571b
+  - enabled: 1
+    path: Assets/RPG_FPS_game_assets_industrial/Map_v1.unity
+    guid: 5a463281e6e238742a45430f11e82829
   m_configObjects: {}
