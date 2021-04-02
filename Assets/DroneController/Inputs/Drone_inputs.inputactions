@@ -15,9 +15,9 @@
                 },
                 {
                     "name": "Horizontal",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "e1e22710-5ae9-43dd-83bb-a5a632bf08ae",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -302,6 +302,85 @@
                     "action": "Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "3e1e838a-d878-403a-af4a-382158852441",
+            "actions": [
+                {
+                    "name": "Menu",
+                    "type": "PassThrough",
+                    "id": "63cee437-1d07-4ffc-9579-3de3106c0c4c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AB",
+                    "type": "Button",
+                    "id": "47981d99-5a41-4be2-9255-6c0eadf418d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "UpDown",
+                    "id": "c906e296-0554-4157-9a44-478f36de4d1d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a1f2b6e8-b705-4de2-b2b5-89df84b3f146",
+                    "path": "<XInputController>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2870b653-554a-4c1e-817f-ddd85b057132",
+                    "path": "<XInputController>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ce83f377-22c0-43b0-bcdb-cb03c8882456",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "889a2572-b65b-40c4-b452-c3547bf640b1",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

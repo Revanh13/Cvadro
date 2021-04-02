@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointContainer : MonoBehaviour
 {
     public int currentIndex;
-
+    public GameObject WinText;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +18,6 @@ public class CheckpointContainer : MonoBehaviour
 
         for (int i = 1; i < transform.childCount; i++)
             transform.GetChild(i).gameObject.SetActive(false);
-        
-
-
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class CheckpointContainer : MonoBehaviour
             //все точки пройдены
 
             transform.GetChild(currentIndex).gameObject.SetActive(false);
-            Victory();
+            StartCoroutine(Victory());
         }
         else
         {
@@ -46,8 +45,12 @@ public class CheckpointContainer : MonoBehaviour
 
     }
 
-    public void Victory()
+    IEnumerator Victory()
     {
+        WinText.SetActive(true);
 
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(0);
     }
 }
