@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 namespace Drone
@@ -14,6 +15,9 @@ namespace Drone
         public GameObject WinText;
         public GameObject Player;
         public GameController gc;
+        public Slider progressBar;
+        public Text progressText;
+        
 
         // Start is called before the first frame update
         void Start()
@@ -24,6 +28,13 @@ namespace Drone
 
             for (int i = 1; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(false);
+
+            if (progressBar && progressText)
+            {
+                progressBar.maxValue = transform.childCount;
+                progressBar.value = 0;
+                progressText.text = "ПРОГРЕСС: 0/" + transform.childCount;
+            }
         }
 
         // Update is called once per frame
@@ -39,20 +50,12 @@ namespace Drone
                 //все точки пройдены
 
                 transform.GetChild(currentIndex).gameObject.SetActive(false);
-                if (CrashText && WinText && timeIsOverText)
+                StartCoroutine(Victory());
+
+                if (progressBar && progressText)
                 {
-                    if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
-                        StartCoroutine(Victory());
-                }
-                else if (CrashText && WinText)
-                {
-                    if (!CrashText.activeSelf && !WinText.activeSelf)
-                        StartCoroutine(Victory());
-                }
-                else if (CrashText)
-                {
-                    if (!CrashText.activeSelf)
-                        StartCoroutine(Victory());
+                    progressBar.value = currentIndex + 1;
+                    progressText.text = "ПРОГРЕСС: " + (currentIndex + 1) + "/" + transform.childCount;
                 }
             }
             else
@@ -61,14 +64,20 @@ namespace Drone
                 transform.GetChild(currentIndex - 1).gameObject.SetActive(false);
                 transform.GetChild(currentIndex).gameObject.SetActive(true);
                 gc.stopTime += 3;
-                gc.timer.text = "ТАЙМЕР: " + (int)(gc.stopTime - Time.time);
+                if (gc.timer)
+                    gc.timer.text = "ТАЙМЕР: " + (int)(gc.stopTime - Time.time);
+                if (progressBar && progressText)
+                {
+                    progressBar.value = currentIndex;
+                    progressText.text = "ПРОГРЕСС: " + currentIndex + "/" + transform.childCount;
+                }
             }
-
         }
 
         IEnumerator Victory()
         {
             WinText.SetActive(true);
+            gc.StopTimer();
 
             yield return new WaitForSeconds(5f);
 

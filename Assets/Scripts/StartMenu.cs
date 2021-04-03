@@ -19,6 +19,9 @@ namespace Player
         public float menu;
         public float Menu { get => menu; }
 
+        public float confirm;
+        public float Confirm { get => confirm; }
+
         Gamepad gamepad = Gamepad.current;
 
         void Start()
@@ -29,8 +32,46 @@ namespace Player
 
         void Update()
         {
-            if (gamepad.aButton.wasPressedThisFrame)
-            {
+            //if (gamepad.aButton.wasPressedThisFrame)
+            //{
+            //    switch (selectedIndex)
+            //    {
+            //        case 0:
+            //            Destroy(Player);
+            //            SceneManager.LoadScene(1);
+            //            break;
+            //        case 1:
+            //            Destroy(Player);
+            //            SceneManager.LoadScene(2);
+            //            break;
+            //        case 2:
+            //            Destroy(Player);
+            //            SceneManager.LoadScene(3);
+            //            break;
+            //        case 3:
+            //            Application.Quit();
+            //            break;
+
+            //    }
+
+            //}
+        }
+
+
+        private void OnMenu(InputValue value)
+        {
+            menu = value.Get<float>();
+            if (menu < 0 && selectedIndex > 0)
+                selectedIndex--;
+            if (menu > 0 && selectedIndex < buttons.Count - 1)
+                selectedIndex++;
+            highlightButton();
+        }
+
+        private void OnConfirm(InputValue value)
+        {
+            confirm = value.Get<float>();
+            if (confirm < 0)
                 switch (selectedIndex)
                 {
                     case 0:
@@ -50,19 +91,6 @@ namespace Player
                         break;
 
                 }
-
-            }
-        }
-
-
-        private void OnMenu(InputValue value)
-        {
-            menu = value.Get<float>();
-            if (menu < 0 && selectedIndex > 0)
-                selectedIndex--;
-            if (menu > 0 && selectedIndex < buttons.Count - 1)
-                selectedIndex++;
-            highlightButton();
         }
 
         void highlightButton()

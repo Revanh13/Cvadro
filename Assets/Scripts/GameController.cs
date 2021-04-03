@@ -61,21 +61,7 @@ namespace Drone
                 yield return new WaitForSeconds(1f);
             }
 
-            if (CrashText && WinText && timeIsOverText)
-            {
-                if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
-                    StartCoroutine(TimeIsOver());
-            }
-            else if (CrashText && WinText)
-            {
-                if (!CrashText.activeSelf && !WinText.activeSelf)
-                    StartCoroutine(TimeIsOver());
-            }
-            else if (CrashText)
-            {
-                if (!CrashText.activeSelf)
-                    StartCoroutine(TimeIsOver());
-            }
+            StartCoroutine(TimeIsOver());
         }
 
         IEnumerator TimeIsOver()

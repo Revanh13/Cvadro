@@ -19,6 +19,7 @@ namespace Drone
         public GameObject WinText;
 
         public AudioManager am;
+        public GameController gc;
 
         private bool isAlive;
 
@@ -41,21 +42,7 @@ namespace Drone
             {
                 isAlive = false;
                 hp = 0;
-                if (CrashText && WinText && timeIsOverText)
-                {
-                    if (!CrashText.activeSelf && !WinText.activeSelf && !timeIsOverText.activeSelf)
-                        StartCoroutine(DroneCrash());
-                }
-                else if (CrashText && WinText)
-                {
-                    if (!CrashText.activeSelf && !WinText.activeSelf)
-                        StartCoroutine(DroneCrash());
-                }
-                else if (CrashText)
-                {
-                    if (!CrashText.activeSelf)
-                        StartCoroutine(DroneCrash());
-                }
+                StartCoroutine(DroneCrash());
                 am.Play("Destroy");
             }
             else if (collision.relativeVelocity.magnitude > 2.5f)
@@ -70,6 +57,8 @@ namespace Drone
         {
             this.gameObject.GetComponent<DroneController>().enabled = false;
             CrashText.SetActive(true);
+            gc.StopTimer();
+            
 
             yield return new WaitForSeconds(5f);
 
